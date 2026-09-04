@@ -1,0 +1,30 @@
+# Environment variables / Secrets (CRITICAL)
+.env
+.env.local
+*.env
+
+# Python runtime & virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+
+# Database files
+*.sqlite3
+*.db
+
+# Static & Media files collected in production
+staticfiles/
+media/
+
+# IDE / Editor configuration files
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
