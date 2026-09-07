@@ -1,29 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Items</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <h1>Items</h1>
-        {% if items %}
-            <ul>
-                {% for item in items %}
-                    <li>
-                        {% if item.image %}
-                            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200">
-                        {% else %}
-                            <span>No image</span>
-                        {% endif %}
-                        <h2>{{ item.name }}</h2>
-                    </li>
-                {% endfor %}
-            </ul>
+      <h1>Items</h1>
+      {% if items %}
+      <ul>
+        {% for item in items %}
+        <h3>{{ item.name }}</h3>
+        {% if item.image %}
+        <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200" />
         {% else %}
-            <p>No items found yet.</p>
-        {% endif %}
+        <p>No image available</p>
+        {% endif %} {% endfor %}
+      </ul>
+      {% else %}
+      <p>No items found yet.</p>
+      {% endif %}
     </main>
-</body>
+  </body>
 </html>
