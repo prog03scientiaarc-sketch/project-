@@ -34,7 +34,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 # Add CSRF Trusted Origins for Render
 CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
-    'https://myproject-web.onrender.com',  # Replace with your actual Render URL
+    'https://project-myproject-app.onrender.com', # Updated to match your active Render URL
 ]
 
 
@@ -155,5 +155,15 @@ os.makedirs(MEDIA_ROOT, exist_ok=True)
 MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+    },
+}
+
+# Replace STATICFILES_STORAGE with the modern STORAGES setting
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
