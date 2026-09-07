@@ -27,7 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+# settings.py
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
+# Add CSRF Trusted Origins for Render
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.onrender.com',
+    'https://myproject-web.onrender.com',  # Replace with your actual Render URL
+]
 
 
 # Application definition
@@ -134,8 +142,11 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Automatically create media directory if it doesn't exist
+os.makedirs(MEDIA_ROOT, exist_ok=True)
 
 
 # Email
