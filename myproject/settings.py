@@ -140,21 +140,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-# Static files configuration
-STATIC_URL = 'static/'
+# settings.py
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Modern Django 4.2+ Storage configuration for WhiteNoise
-# settings.py
-
-# settings.py
 
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Disables build-time compression to eliminate the Python 3.14 multithread race condition
         "BACKEND": "whitenoise.storage.StaticFilesStorage",
     },
 }
@@ -181,3 +175,7 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+# settings.py
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
