@@ -147,13 +147,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Modern Django 4.2+ Storage configuration for WhiteNoise
 # settings.py
 
+# settings.py
+
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Use CompressedStaticFilesStorage instead of CompressedManifestStaticFilesStorage
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        # Disables build-time compression to eliminate the Python 3.14 multithread race condition
+        "BACKEND": "whitenoise.storage.StaticFilesStorage",
     },
 }
 
